@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "./Container";
 
 const CounterApp = () => {
+  const [count, setCount] = useState(0);
+  const handleIncreaseBtn = () => {
+    setCount(count + 1);
+  };
+  const handleResetBtn = () => {
+    setCount(0);
+  };
+  const handleDecreaseBtn = () => {
+    count > 0 && setCount(count - 1);
+  };
   return (
     <Container>
       <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 p-4">
@@ -21,24 +31,33 @@ const CounterApp = () => {
             <div className="relative text-center">
               <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 blur-lg opacity-30 rounded-full"></div>
               <h1 className="relative text-9xl md:text-10xl font-bold  bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                0
+                {count}
               </h1>
             </div>
 
             {/* Button Row */}
             <div className="grid grid-cols-3 gap-4">
               {/* Decrease Button */}
-              <button className="bg-red-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-red-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1">
+              <button
+                onClick={handleDecreaseBtn}
+                className="bg-red-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-red-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1"
+              >
                 -
               </button>
 
               {/* Reset Button */}
-              <button className="bg-gray-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-gray-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1">
+              <button
+                onClick={handleResetBtn}
+                className="bg-gray-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-gray-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1"
+              >
                 Reset
               </button>
 
               {/* Increase Button */}
-              <button className="bg-green-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-green-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1">
+              <button
+                onClick={handleIncreaseBtn}
+                className="bg-green-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-green-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1"
+              >
                 +
               </button>
             </div>
