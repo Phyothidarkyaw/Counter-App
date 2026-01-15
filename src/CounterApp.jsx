@@ -1,0 +1,60 @@
+import React from "react";
+import Container from "./Container";
+
+const CounterApp = () => {
+  return (
+    <Container>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-gray-50 to-gray-100 p-4">
+        <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 md:p-10 space-y-8">
+          {/* Header */}
+          <div className="text-center space-y-2">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 tracking-tight">
+              Counter App
+            </h1>
+            <p className="text-gray-500 text-lg">
+              Click to increase or decrease the count
+            </p>
+          </div>
+
+          {/* Counter Display */}
+          <div className="space-y-10">
+            <div className="relative text-center">
+              <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 blur-lg opacity-30 rounded-full"></div>
+              <h1 className="relative text-9xl md:text-10xl font-bold  bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                0
+              </h1>
+            </div>
+
+            {/* Button Row */}
+            <div className="grid grid-cols-3 gap-4">
+              {/* Decrease Button */}
+              <button className="bg-red-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-red-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1">
+                -
+              </button>
+
+              {/* Reset Button */}
+              <button className="bg-gray-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-gray-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1">
+                Reset
+              </button>
+
+              {/* Increase Button */}
+              <button className="bg-green-600 text-white py-4 px-2 rounded-xl font-semibold text-lg transition-all duration-300 hover:bg-green-500 hover:shadow-lg hover:-translate-y-1 active:translate-y-1">
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="pt-8 border-t border-gray-200">
+            <div className="text-center text-gray-500 text-sm">
+              <p>Built with React & Tailwind CSS</p>
+              <p className="mt-1">Press and hold for rapid counting</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
+};
+
+export default CounterApp;
