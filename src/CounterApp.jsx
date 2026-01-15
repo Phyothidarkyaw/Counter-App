@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import Container from "./Container";
+import useCounterStore from "./useStore";
 
 const CounterApp = () => {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+
+  const { count, increaseCount, resetCount, decreaseCount } = useCounterStore();
+
   const handleIncreaseBtn = () => {
-    setCount(count + 1);
+    // setCount(count + 1);
+    increaseCount();
   };
   const handleResetBtn = () => {
-    setCount(0);
+    // setCount(0);
+    resetCount();
   };
   const handleDecreaseBtn = () => {
-    count > 0 && setCount(count - 1);
+    // count > 0 && setCount(count - 1);
+    count > 0 && decreaseCount();
   };
   return (
     <Container>
