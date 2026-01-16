@@ -1,23 +1,52 @@
-// import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Container from "./Container";
 import useCounterStore from "./useStore";
 
 const CounterApp = () => {
   // const [count, setCount] = useState(0);
-
   const { count, increaseCount, resetCount, decreaseCount } = useCounterStore();
+  const [animate, setAnimate] = useState(false);
+  const timeoutRef = useRef(null);
+
+  const startAnimation = () => {
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Start animation
+    setAnimate(true);
+
+    // Set timeout to stop animation after 1000ms
+    timeoutRef.current = setTimeout(() => {
+      setAnimate(false);
+      timeoutRef.current = null;
+    }, 100);
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleIncreaseBtn = () => {
     // setCount(count + 1);
     increaseCount();
+    startAnimation();
   };
   const handleResetBtn = () => {
     // setCount(0);
     resetCount();
+    startAnimation();
   };
   const handleDecreaseBtn = () => {
     // count > 0 && setCount(count - 1);
     count > 0 && decreaseCount();
+    startAnimation();
   };
   return (
     <Container>
@@ -37,7 +66,11 @@ const CounterApp = () => {
           <div className="space-y-10">
             <div className="relative text-center">
               <div className="absolute inset-0 bg-linear-to-r from-blue-500 to-purple-500 blur-lg opacity-30 rounded-full"></div>
-              <h1 className="relative text-9xl md:text-10xl font-bold  bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h1
+                className={`relative text-9xl md:text-10xl font-bold  bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ${
+                  animate ? "scale-80" : ""
+                }`}
+              >
                 {count}
               </h1>
             </div>
