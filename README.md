@@ -2,17 +2,13 @@
 
 A simple, responsive counter application built with React + Vite and styled with Tailwind CSS.
 
-## 🚀 Live Demo
-[Add your live demo link here]
-
 ## 📸 Screenshot
-![Counter App Screenshot](./screenshot.png)
+![Counter App Screenshot](./public/screenshot.png)
 
 ## ✨ Features
 - Increment, decrement, and reset counter
 - Responsive design for all screen sizes
 - Visual feedback with color-coded counter values
-- Keyboard shortcuts support
 - Smooth animations with Tailwind CSS
 
 ## 🛠️ Technologies
